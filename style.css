@@ -1,0 +1,578 @@
+@import url('https://fonts.googleapis.com/css2?family=Sono:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&display=swap');
+
+body {
+    background-color: #F1E5D1;
+}
+
+header {
+    position: fixed;
+    display: flex;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #707070;
+    padding-inline: 5vw;
+    padding-top: 1vh;
+    margin: -1vw;
+    padding-bottom: 1vh;
+    z-index: 99;
+}
+
+.container {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 220%;
+    background-image: repeating-radial-gradient( #0c0a0a 80%,#2f312f 90%,#3f4549 90%);
+    background-size: 65px 65px;
+    overflow: hidden;
+    z-index: -1;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.extras {
+    display: flex;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+}
+
+    header nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-family: "Sono", monospace;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        font-variation-settings: "MONO";
+    }
+
+.name {
+    font-family: 'Kalnia', serif;
+    font-weight: 700;
+    font-size: 3vw;
+    color: white;
+}
+
+.fa-search {
+    color: white;
+    position: relative;
+    top: 2rem;
+    height: 10px;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    position: relative;
+    top: 30vw;
+    font-family: 'Kalnia', serif;
+    font-weight: 600;
+    text-align: center;
+    max-width: 50vw;
+    font-size: 3.5vw;
+    color: #69646e;
+    opacity: 0;
+}
+
+
+.welcome {
+    padding-top: 10vw;
+    font-family: 'Kalnia', serif;
+    font-weight: 600;
+    text-align: center;
+    font-size: 5vw;
+    color: #69646e;
+}
+
+.desc {
+    padding-top: 3.5vh;
+    padding-left: 16vw;
+    font-family: 'Kalnia', serif;
+    font-weight: 400;
+    max-width: 85vw;
+    text-align: center;
+    font-size: 2rem;
+    color: #69646e;
+}
+
+
+
+
+.button {
+    --black-700: hsla(0 0% 12% / 1);
+    --border_radius: 9999px;
+    --transtion: 0.3s ease-in-out;
+    --offset: 2px;
+    cursor: pointer;
+    position: absolute;
+    left: 45.5%;
+    top: 140%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transform-origin: center;
+    padding: 1rem 2rem;
+    background-color: transparent;
+    border: none;
+    border-radius: var(--border_radius);
+    transform: scale(calc(1 + (var(--active, 0) * 0.1)));
+    transition: transform var(--transtion);
+}
+
+    .button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        background-color: var(--black-700);
+        border-radius: var(--border_radius);
+        box-shadow: inset 0 0.5px hsl(0, 0%, 100%), inset 0 -1px 2px 0 hsl(0, 0%, 0%), 0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0))), 0 0 0 calc(var(--active, 0) * 0.375rem) hsl(260 97% 50% / 0.75);
+        transition: all var(--transtion);
+        z-index: 0;
+    }
+
+    .button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        background-color: hsla(260 97% 61% / 0.75);
+        background-image: radial-gradient( at 51% 89%, hsla(266, 45%, 74%, 1) 0px, transparent 50% ), radial-gradient(at 100% 100%, hsla(266, 36%, 60%, 1) 0px, transparent 50%), radial-gradient(at 22% 91%, hsla(266, 36%, 60%, 1) 0px, transparent 50%);
+        background-position: top;
+        opacity: var(--active, 0);
+        border-radius: var(--border_radius);
+        transition: opacity var(--transtion);
+        z-index: 2;
+    }
+
+    .button:is(:hover, :focus-visible) {
+        --active: 1;
+    }
+
+    .button:active {
+        transform: scale(1);
+    }
+
+    .button .dots_border {
+        --size_border: calc(100% + 2px);
+        overflow: hidden;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: var(--size_border);
+        height: var(--size_border);
+        background-color: transparent;
+        border-radius: var(--border_radius);
+        z-index: -10;
+    }
+
+        .button .dots_border::before {
+            content: "";
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transform-origin: left;
+            transform: rotate(0deg);
+            width: 100%;
+            height: 2rem;
+            background-color: white;
+            mask: linear-gradient(transparent 0%, white 120%);
+            animation: rotate 2s linear infinite;
+        }
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.button .sparkle {
+    position: relative;
+    z-index: 10;
+    width: 1.75rem;
+}
+
+    .button .sparkle .path {
+        fill: currentColor;
+        stroke: currentColor;
+        transform-origin: center;
+        color: hsl(0, 0%, 100%);
+    }
+
+.button:is(:hover, :focus) .sparkle .path {
+    animation: path 1.5s linear 0.5s infinite;
+}
+
+.button .sparkle .path:nth-child(1) {
+    --scale_path_1: 1.2;
+}
+
+.button .sparkle .path:nth-child(2) {
+    --scale_path_2: 1.2;
+}
+
+.button .sparkle .path:nth-child(3) {
+    --scale_path_3: 1.2;
+}
+
+@keyframes path {
+    0%, 34%, 71%, 100% {
+        transform: scale(1);
+    }
+
+    17% {
+        transform: scale(var(--scale_path_1, 1));
+    }
+
+    49% {
+        transform: scale(var(--scale_path_2, 1));
+    }
+
+    83% {
+        transform: scale(var(--scale_path_3, 1));
+    }
+}
+
+.button .text_button {
+    position: relative;
+    left: -15px;
+    z-index: 10;
+    background-image: linear-gradient( 90deg, hsla(0 0% 100% / 1) 0%, hsla(0 0% 100% / var(--active, 0)) 120% );
+    background-clip: text;
+    font-size: 1rem;
+    color: white;
+}
+
+.card {
+    width: 320px;
+    padding: 30px;
+    background: #e6e1eb;
+    border: 8px solid #000;
+    box-shadow: 15px 15px 0 #000;
+    transform: rotate(-2deg);
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 60%;
+    left: 41%;
+    overflow: hidden;
+}
+
+    .card:active {
+        animation: shake 0.5s ease-in-out;
+    }
+
+    .card:hover {
+        transform: rotate(0deg) scale(1.02);
+        box-shadow: 20px 20px 0 #000;
+    }
+
+.banner {
+    position: absolute;
+    top: 3px;
+    right: -95px;
+    background: #000;
+    color: #fff;
+    padding: 15px;
+    width: 350px;
+    text-align: center;
+    transform: rotate(45deg);
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 2px;
+    overflow: hidden;
+    transition: background 0.5s ease;
+}
+
+.banner-text {
+    display: inline-block;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    width: 100%;
+    position: absolute;
+    left: 13%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.banner:hover .banner-text:first-child {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.banner:hover .banner-text:last-child {
+    opacity: 1;
+    transform: translateY(-40%);
+}
+
+.banner-text:last-child {
+    opacity: 0;
+    transform: translateY(60%);
+}
+
+.banner:hover {
+    background: red;
+}
+
+.card__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+    border-bottom: 2px solid #000;
+    width: 50%; 
+}
+
+.card__subtitle {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.card__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+    .card__form input {
+        padding: 12px;
+        border: 4px solid #000;
+        font-size: 16px;
+        font-family: "Proxima Nova", sans-serif;
+        transition: all 0.3s ease;
+        background-color: #fff;
+    }
+
+        .card__form input:focus {
+            outline: none;
+            transform: scale(1.05);
+        }
+
+.sign-up {
+    border: 4px solid #000;
+    background: #000;
+    color: #fff;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .sign-up:hover {
+        background: #fff;
+        color: #000;
+        transform: translateY(-5px);
+        box-shadow: 0 5px 0 #000;
+    }
+
+    .sign-up:active {
+        animation: shake 0.5s ease-in-out;
+        transform: translateY(0);
+        box-shadow: none;
+    }
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.card1-container {
+    margin: 2px;
+    padding-inline: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffa07a 25%, transparent 25%) -50px 0, linear-gradient(225deg, #ffa07a 25%, transparent 25%) -50px 0, linear-gradient(315deg, #ffa07a 25%, transparent 25%), linear-gradient(45deg, #ffa07a 25%, transparent 25%);
+    background-size: 100px 100px;
+    background-color: #ffffff;
+    perspective: 1000px;
+}
+
+.card1 {
+    width: 300px;
+    background-color: rgb(223 223 223 / 90%);
+    border-radius: 20px;
+    position: absolute;
+    top: 165%;
+    left: 15%;
+    border: 3px solid #000;
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+}
+
+
+    .card1 .content {
+        padding: 30px;
+        padding-top: 60px;
+    }
+
+    .card1 .name1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .card1 .handle {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        background-color: #707070;
+        padding: 10px 20px;
+        border-radius: 0 0 15px 15px;
+        border: 2px solid #000;
+        border-top: none;
+        font-weight: bold;
+    }
+
+    .card1 .title1 {
+        font-size: 18px;
+    }
+
+.card2 {
+    width: 300px;
+    background-color: rgb(223 223 223 / 90%);
+    border-radius: 20px;
+    position: absolute;
+    top: 165%;
+    left: 42%;
+    border: 3px solid #000;
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+}
+
+
+    .card2 .content1 {
+        padding: 30px;
+        padding-top: 60px;
+    }
+
+    .card2 .name2 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .card2 .handle1 {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        background-color: #707070;
+        padding: 10px 20px;
+        border-radius: 0 0 15px 15px;
+        border: 2px solid #000;
+        border-top: none;
+        font-weight: bold;
+    }
+
+    .card2 .title2 {
+        font-size: 18px;
+    }
+
+.card3 {
+    width: 300px;
+    background-color: rgb(223 223 223 / 90%);
+    border-radius: 20px;
+    position: absolute;
+    top: 165%;
+    left: 70%;
+    border: 3px solid #000;
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+}
+
+
+    .card3 .content2 {
+        padding: 30px;
+        padding-top: 60px;
+    }
+
+    .card3 .name3 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .card3 .handle2 {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        background-color: #707070;
+        padding: 10px 20px;
+        border-radius: 0 0 15px 15px;
+        border: 2px solid #000;
+        border-top: none;
+        font-weight: bold;
+    }
+
+    .card3 .title3 {
+        font-size: 18px;
+    }
+
+
+::-webkit-scrollbar {
+    width: 5px;
+    background: rgb(0,0,0);
+}
+
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: rgb(241, 238, 238);
+    border-radius: 10px;
+}
